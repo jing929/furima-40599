@@ -4,7 +4,7 @@
 #   belongs_to :condition
 #   belongs_to :prefecture
 #   belongs_to :shipping_cost
-#   belongs_to :shipping_days
+#   belongs_to :shipping_day
 #   belongs_to :user
 
 #   has_many :images
