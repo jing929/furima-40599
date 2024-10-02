@@ -16,25 +16,20 @@
 | ---------------- | --------- | ------------------------- |
 | item_name       | string    | null: false |
 | description      | text      | null: false |
-| category_id      | integer   | null: false |
+| category         | integer   | null: false |
 | condition_id     | integer   | null: false |
-| shipping_cost_id | integer   | null: false |
-| shipping_area_id | integer   | null: false |
-| shipping_days_id | integer   | null: false |
+| shipping_cost    | integer   | null: false |
+| shipping_area    | integer   | null: false |
+| shipping_days    | integer   | null: false |
 | price            | integer   | null: false |
 | user_id    | references | null: false, foreign_key: true |
-
-## categoriesテーブル
-| Column           | Type      | Options                   |
-| ---------------- | --------- | ------------------------- |
-| category_name    | string    | null: false, unique: true |
 
 ## ordersテーブル
 | Column           | Type      | Options                   |
 | ---------------- | --------- | ------------------------- |
 | user_id    | references | null: false, foreign_key: true |
 | item_id    | references | null: false, foreign_key: true |
-| address    | references | null: false, foreign_key: true |
+| address_id | references | null: false, foreign_key: true |
 | token            | integer   | null: false, unique: true |
 
 ## addressesテーブル
