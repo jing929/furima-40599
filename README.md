@@ -16,7 +16,6 @@
 
 - has_many :items
 - has_many :orders
-- has_many :addresses
 
 
 ## itemsテーブル
@@ -41,7 +40,8 @@
 - belongs_to :shipping_day
 - belongs_to :user
 
-- has_many :images
+<!-- DB設計としてはactivestorageのアソシエーションは記載しなくても問題ない
+- has_one_attached :images -->
 - has_one :order
 
 
@@ -56,6 +56,8 @@
 - belongs_to :user
 - belongs_to :item
 
+- has_one :address
+
 ## addressesテーブル
 | Column           | Type      | Options                   |
 | ---------------- | --------- | ------------------------- |
@@ -69,7 +71,6 @@
 
 ### Association
 
-- belongs_to :user
 - belongs_to :order
 
 
