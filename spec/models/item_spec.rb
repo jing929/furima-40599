@@ -12,6 +12,12 @@ RSpec.describe Item, type: :model do
     end
 
     context '商品出品できないとき' do
+      it 'ユーザーがいないと登録できない' do
+        @item.user = nil
+        expect(@item.valid?).to be_falsey
+        expect(@item.errors.full_messages).to include("User must exist")
+      end
+
       it 'imageが空では登録できない' do
         @item.image = nil
         @item.valid?
