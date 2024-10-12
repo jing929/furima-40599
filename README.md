@@ -25,9 +25,9 @@
 | description      | text      | null: false |
 | category_id      | integer   | null: false |
 | condition_id     | integer   | null: false |
-| shipping_cost_id | integer   | null: false |
+| shopping_cost_id | integer   | null: false |
 | prefecture_id    | integer   | null: false |
-| shipping_day_id  | integer   | null: false |
+| shopping_day_id  | integer   | null: false |
 | price            | integer   | null: false |
 | user       | references | null: false, foreign_key: true |
 
@@ -36,12 +36,12 @@
 - belongs_to :category
 - belongs_to :condition
 - belongs_to :prefecture
-- belongs_to :shipping_cost
-- belongs_to :shipping_day
+- belongs_to :shopping_cost
+- belongs_to :shopping_day
 - belongs_to :user
 
-<!-- DB設計としてはactivestorageのアソシエーションは記載しなくても問題ない
-- has_one_attached :images -->
+<!-- (学習メモ)DB設計としてはactivestorageのアソシエーションは記載しなくても問題ない -->
+- has_one_attached :image
 - has_one :order
 
 
