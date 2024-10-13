@@ -27,7 +27,7 @@
         <%# ログイン中のユーザーが出品者で、商品が売れていない場合 %>
         <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
         <p class="or-text">or</p>
-        <%= link_to "削除", item_path(@item.id), method: :delete, data: { confirm: "本当に削除してもよろしいですか？" }, class: "item-destroy" %>
+        <%= link_to "削除", item_path(@item.id), method: :delete, data: { turbo_method: :delete, confirm: "本当に削除してもよろしいですか？" }, class: "item-destroy" %>
       <% else %>
         <%# ログイン中のユーザーが出品者ではないが、商品が売れていない場合 %>
         <%= link_to "購入画面に進む", "#", class: "item-red-btn" %>
