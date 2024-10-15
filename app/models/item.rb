@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   belongs_to :user
 
   has_one_attached :image
-  # has_one :order
+  has_one :order
   
   validates :item_name, presence: true, length: { maximum: 40 }
   validates :description, presence: true, length: { maximum: 1000 }
@@ -22,7 +22,7 @@ class Item < ApplicationRecord
   validates :image, presence: true
 
   def sold_out?
-    # orders.any?
+    self.order.present?
   end
 
 end
