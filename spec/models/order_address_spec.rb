@@ -12,6 +12,11 @@ RSpec.describe OrderAddress, type: :model do
       it 'すべての値が正しく入力されていれば購入できる' do
         expect(@order_address).to be_valid
       end
+
+      it "建物名の入力がなくても登録できること" do
+        @order_address.building = nil
+        expect(@order_address).to be_valid
+      end
     end
 
     context '商品購入できないとき' do
@@ -19,6 +24,12 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.user_id = nil
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("User can't be blank")
+      end
+
+      it "item_idが空では購入できないこと" do
+        @order_address.item_id = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Item can't be blank")
       end
 
       it 'postal_codeが空では登録できない' do
