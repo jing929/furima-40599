@@ -7,11 +7,11 @@
     </h2>
     <div class="item-img-content">
       <%= image_tag @item.image.present? ? @item.image : "item-sample.png", class: "item-img" %>
-      <%# <% if @item.sold_out? %>
-        <%# <div class="sold-out">
+      <% if @item.sold_out? %>
+        <div class="sold-out">
           <span>Sold Out!!</span>
-        </div> %>
-      <%# <% end %>
+        </div>
+      <% end %>
     </div>
     <div class="item-price-box">
       <span class="item-price">
@@ -23,14 +23,14 @@
     </div>
 
     <% if user_signed_in? %>
-      <% if current_user == @item.user %> 
+      <% if current_user == @item.user && !@item.sold_out? %> 
         <%# ログイン中のユーザーが出品者で、商品が売れていない場合 %>
         <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
         <p class="or-text">or</p>
         <%= link_to "削除", item_path(@item.id), method: :delete, data: { turbo_method: :delete, confirm: "本当に削除してもよろしいですか？" }, class: "item-destroy" %>
-      <% else %>
+      <% elsif !@item.sold_out? %>
         <%# ログイン中のユーザーが出品者ではないが、商品が売れていない場合 %>
-        <%= link_to "購入画面に進む", "#", class: "item-red-btn" %>
+        <%= link_to "購入画面に進む", item_orders_path(@item.id), data: { turbo: false }, class: "item-red-btn" %>
       <% end %>
     <% end %>
 
