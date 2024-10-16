@@ -2,14 +2,6 @@ class OrderAddress
   include ActiveModel::Model
   attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :city, :address, :building, :phone_number, :token
  
-  def save
-    remove_hyphens_from_phone_number
-  end
-
-  def remove_hyphens_from_phone_number
-    self.phone_number = phone_number.delete('-') if phone_number.present?
-  end
-
   with_options presence: true do
     validates :user_id
     validates :item_id
