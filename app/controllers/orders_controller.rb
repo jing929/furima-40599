@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
     @order_address = OrderAddress.new
 
     if current_user && current_user == @item.user
-      redirect_to root_path
+      redirect_to root_path and return
     end
 
     if @item.sold_out? 
